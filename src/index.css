@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@layer base {
+  :root, [data-theme="light"] {
+    /* Warm-White Aerospace Light Design System */
+    --bg-page: #F7F6F2;
+    --bg-surface-secondary: #F0EFEA;
+    --bg-surface-panel: #FFFFFF;
+    --bg-surface-elevated: #FAF9F6;
+    
+    /* Borders */
+    --border-default: #E2E1DC;
+    --border-subtle: #EAE9E4;
+    
+    /* Typography */
+    --text-primary: #252A30;
+    --text-secondary: #626A73;
+    --text-muted: #858B92;
+
+    /* Primary Accent — Muted Forest Green */
+    --accent-primary: #52745C;
+    --accent-hover: #64866D;
+    --accent-soft: #EAF0E9;
+
+    /* Secondary Accent — Muted Terracotta */
+    --accent-secondary: #C47C61;
+
+    /* Status Colors */
+    --status-warning: #C58A3C;
+    --status-critical: #C65D5D;
+  }
+
+  [data-theme="dark"], html.dark {
+    /* Exact Designed Dark Theme Tokens */
+    --bg-page: #171A1D;
+    --bg-surface-secondary: #202428;
+    --bg-surface-panel: #252A2E;
+    --bg-surface-elevated: #2C3236;
+    
+    /* Borders */
+    --border-default: #383F42;
+    --border-subtle: #2C3236;
+    
+    /* Typography */
+    --text-primary: #E8E9E6;
+    --text-secondary: #B0B6B4;
+    --text-muted: #858D8B;
+
+    /* Primary Accent */
+    --accent-primary: #8BA893;
+    --accent-hover: #A0B9A5;
+    --accent-soft: #303B34;
+
+    /* Secondary Accent */
+    --accent-secondary: #D19A80;
+
+    /* Status Colors */
+    --status-warning: #D6A45B;
+    --status-critical: #D57878;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  /* Monospace font for telemetry, coordinates and orbital data */
+  .font-mono-telemetry {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-feature-settings: "tnum" 1;
+  }
+}
+
+/* ========================================================================= */
+/* CENTRALIZED DARK THEME TOKEN MAPPING                                      */
+/* Instantly re-maps all UI token classes when [data-theme="dark"] is active */
+/* ========================================================================= */
+
+[data-theme="dark"], html.dark {
+  /* Page & Background Surfaces */
+  .bg-\[\#F7F6F2\] { background-color: #171A1D !important; }
+  .bg-\[\#F0EFEA\] { background-color: #202428 !important; }
+  .bg-\[\#FFFFFF\] { background-color: #252A2E !important; }
+  .bg-\[\#FAF9F6\] { background-color: #2C3236 !important; }
+  .hover\:bg-\[\#FAF9F6\]:hover { background-color: #2C3236 !important; }
+  .hover\:bg-\[\#F0EFEA\]:hover { background-color: #202428 !important; }
+  .hover\:bg-\[\#FFFFFF\]:hover { background-color: #252A2E !important; }
+
+  /* Borders & Dividers */
+  .border-\[\#E2E1DC\] { border-color: #383F42 !important; }
+  .border-\[\#EAE9E4\] { border-color: #2C3236 !important; }
+  .divide-\[\#E2E1DC\] > :not([hidden]) ~ :not([hidden]) { border-color: #383F42 !important; }
+
+  /* Typography */
+  .text-\[\#252A30\] { color: #E8E9E6 !important; }
+  .text-\[\#626A73\] { color: #B0B6B4 !important; }
+  .text-\[\#858B92\] { color: #858D8B !important; }
+  .hover\:text-\[\#252A30\]:hover { color: #E8E9E6 !important; }
+  .group:hover .group-hover\:text-\[\#252A30\] { color: #E8E9E6 !important; }
+  .group:hover .group-hover\:text-\[\#52745C\] { color: #8BA893 !important; }
+  .placeholder-\[\#858B92\]::placeholder { color: #858D8B !important; }
+
+  /* Primary Accent & Hover States */
+  .bg-\[\#52745C\] { background-color: #8BA893 !important; }
+  .text-\[\#52745C\] { color: #8BA893 !important; }
+  .hover\:bg-\[\#64866D\]:hover { background-color: #A0B9A5 !important; }
+  .hover\:text-\[\#52745C\]:hover { color: #8BA893 !important; }
+  .hover\:bg-\[\#52745C\]:hover { background-color: #8BA893 !important; }
+  .active\:bg-\[\#52745C\]:active { background-color: #8BA893 !important; }
+  .border-\[\#52745C\] { border-color: #8BA893 !important; }
+  .border-\[\#52745C\]\/25 { border-color: rgba(139, 168, 147, 0.25) !important; }
+  .border-\[\#52745C\]\/30 { border-color: rgba(139, 168, 147, 0.3) !important; }
+  .border-\[\#52745C\]\/40 { border-color: rgba(139, 168, 147, 0.4) !important; }
+  .bg-\[\#EAF0E9\] { background-color: #303B34 !important; }
+
+  /* Secondary Accent (Terracotta) */
+  .text-\[\#C47C61\] { color: #D19A80 !important; }
+  .bg-\[\#C47C61\] { background-color: #D19A80 !important; }
+  .border-\[\#C47C61\]\/25 { border-color: rgba(209, 154, 128, 0.25) !important; }
+  .border-\[\#C47C61\]\/30 { border-color: rgba(209, 154, 128, 0.3) !important; }
+  .bg-\[\#C47C61\]\/10 { background-color: rgba(209, 154, 128, 0.15) !important; }
+
+  /* Warning */
+  .text-\[\#C58A3C\] { color: #D6A45B !important; }
+  .bg-\[\#C58A3C\] { background-color: #D6A45B !important; }
+  .border-\[\#C58A3C\]\/25 { border-color: rgba(214, 164, 91, 0.25) !important; }
+  .border-\[\#C58A3C\]\/30 { border-color: rgba(214, 164, 91, 0.3) !important; }
+  .bg-\[\#C58A3C\]\/10 { background-color: rgba(214, 164, 91, 0.15) !important; }
+
+  /* Critical */
+  .text-\[\#C65D5D\] { color: #D57878 !important; }
+  .bg-\[\#C65D5D\] { background-color: #D57878 !important; }
+  .border-\[\#C65D5D\]\/25 { border-color: rgba(213, 120, 120, 0.25) !important; }
+  .border-\[\#C65D5D\]\/30 { border-color: rgba(213, 120, 120, 0.3) !important; }
+  .bg-\[\#C65D5D\]\/10 { background-color: rgba(213, 120, 120, 0.15) !important; }
+
+  /* Form Elements */
+  select option {
+    background-color: #252A2E;
+    color: #E8E9E6;
+  }
+}
+
+/* Custom scrollbars for light theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
